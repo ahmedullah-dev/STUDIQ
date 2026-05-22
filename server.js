@@ -225,9 +225,9 @@ function parseQuizResponse(rawResponse) {
   }
 }
 
-// Homepage
+// Homepage - Serve index.html
 app.get("/", (req, res) => {
-  res.send("AI Study Tutor API - Enhanced Edition");
+  res.sendFile(new URL('./public/index.html', import.meta.url).pathname);
 });
 
 // ENHANCED SUMMARIZE ENDPOINT

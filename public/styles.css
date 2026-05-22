@@ -4,30 +4,36 @@
    ========================================== */
 
 :root {
-  /* Light Theme Colors */
-  --bg-light: #e6eaf0;
-  --bg-light-elevated: #f0f4f8;
-  --text-light: #2c3e50;
-  --text-light-secondary: #5a6c7d;
-  --shadow-light-1: rgba(163, 177, 198, 0.7);
-  --shadow-light-2: rgba(255, 255, 255, 0.9);
-  --shadow-inset-1: rgba(163, 177, 198, 0.4);
-  --shadow-inset-2: rgba(255, 255, 255, 0.7);
+  /* Light Theme Colors - Premium Educational */
+  --bg-light: #bfdbfe;
+  --bg-light-elevated: #ffffff;
+  --text-light: #0f172a;
+  --text-light-secondary: #475569;
+  --shadow-light-1: rgba(15, 23, 42, 0.12);
+  --shadow-light-2: rgba(255, 255, 255, 0.8);
+  --shadow-inset-1: rgba(15, 23, 42, 0.08);
+  --shadow-inset-2: rgba(255, 255, 255, 0.6);
   
-  /* Color Palette */
-  --primary: #667eea;
-  --primary-dark: #5568d3;
-  --primary-light: #8b9ef5;
-  --secondary: #764ba2;
-  --accent: #f093fb;
-  --success: #4caf50;
-  --success-dark: #45a049;
-  --danger: #f44336;
-  --danger-dark: #d32f2f;
-  --warning: #ff9800;
-  --warning-dark: #f57c00;
-  --info: #2196f3;
-  --info-dark: #1976d2;
+  /* Premium Color Palette */
+  --primary: #3b82f6;
+  --primary-dark: #1e40af;
+  --primary-light: #60a5fa;
+  --secondary: #8b5cf6;
+  --accent: #ec4899;
+  --success: #10b981;
+  --success-dark: #059669;
+  --danger: #ef4444;
+  --danger-dark: #dc2626;
+  --warning: #f59e0b;
+  --warning-dark: #d97706;
+  --info: #06b6d4;
+  --info-dark: #0891b2;
+  --border-color: #e2e8f0;
+  --gradient-1: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  --gradient-2: linear-gradient(135deg, #ec4899 0%, #3b82f6 100%);
+  --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --gradient-danger: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  --gradient-warning: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
   
   /* Spacing System */
   --spacing-xs: 0.25rem;
@@ -63,19 +69,37 @@
   --transition-slow: 0.5s ease-in-out;
 }
 
-/* Dark Theme */
+/* Dark Theme - Premium Educational */
 body.dark {
-  --bg-light: #1a1d29;
-  --bg-light-elevated: #22252f;
-  --text-light: #e4e7ec;
-  --text-light-secondary: #9ca3af;
-  --shadow-light-1: rgba(0, 0, 0, 0.5);
-  --shadow-light-2: rgba(255, 255, 255, 0.03);
+  --bg-light: #0f172a;
+  --bg-light-elevated: #1e293b;
+  --text-light: #f1f5f9;
+  --text-light-secondary: #cbd5e1;
+  --shadow-light-1: rgba(0, 0, 0, 0.4);
+  --shadow-light-2: rgba(59, 130, 246, 0.1);
   --shadow-inset-1: rgba(0, 0, 0, 0.3);
-  --shadow-inset-2: rgba(255, 255, 255, 0.02);
-  --primary: #7c3aed;
-  --primary-dark: #6d28d9;
-  --primary-light: #8b5cf6;
+  --shadow-inset-2: rgba(59, 130, 246, 0.05);
+  --primary: #60a5fa;
+  --primary-dark: #3b82f6;
+  --primary-light: #93c5fd;
+  --secondary: #a78bfa;
+  --accent: #ec4899;
+  --border-color: #334155;
+  --gradient-1: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+  --gradient-2: linear-gradient(135deg, #ec4899 0%, #60a5fa 100%);
+}
+
+body.dark .app-header h1 {
+  color: #e2e8f0;
+}
+
+/* Accessibility: Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* ==========================================
@@ -107,6 +131,15 @@ body {
   padding: var(--spacing-lg);
   transition: background var(--transition-base), color var(--transition-base);
   overflow-x: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+body.light {
+  --bg-light: #efefef;
+  --bg-light-elevated: #ffffff;
+  --text-light: #0f172a;
+  --text-light-secondary: #475569;
 }
 
 ::selection {
@@ -151,13 +184,8 @@ body {
   font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-5xl));
   font-weight: 800;
   margin-bottom: var(--spacing-md);
-  background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #334155;
   letter-spacing: -0.02em;
-  animation: gradientShift 8s ease infinite;
-  background-size: 200% 200%;
 }
 
 @keyframes gradientShift {
@@ -172,12 +200,31 @@ body {
   letter-spacing: 0.02em;
 }
 
+.logo-icon {
+  display: inline-block;
+  margin-right: var(--spacing-sm);
+  font-size: 1.3em;
+  line-height: 1;
+  will-change: transform;
+  -webkit-text-fill-color: var(--text-light) !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+
+
 /* ==========================================
    NEUMORPHIC CARD COMPONENT
    ========================================== */
 
 .neumo-card {
-  background: var(--bg-light);
+  background: var(--bg-light-elevated);
   border-radius: var(--radius-xl);
   padding: var(--spacing-xl);
   margin-bottom: var(--spacing-xl);
@@ -236,7 +283,7 @@ textarea {
   padding: var(--spacing-lg);
   border: none;
   border-radius: var(--radius-lg);
-  background: var(--bg-light);
+  background: var(--bg-light-elevated);
   color: var(--text-light);
   font-family: inherit;
   font-size: var(--font-size-base);
@@ -276,7 +323,7 @@ textarea::placeholder {
   padding: var(--spacing-md) var(--spacing-xl);
   border: none;
   border-radius: var(--radius-lg);
-  background: var(--bg-light);
+  background: var(--bg-light-elevated);
   color: var(--text-light);
   font-size: var(--font-size-base);
   font-weight: 600;
@@ -318,6 +365,7 @@ textarea::placeholder {
   box-shadow: 
     12px 12px 24px var(--shadow-light-1),
     -12px -12px 24px var(--shadow-light-2);
+  will-change: transform;
 }
 
 .neumo-btn:active {
@@ -329,20 +377,21 @@ textarea::placeholder {
 
 /* Button Variants */
 .neumo-btn.primary {
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  background: var(--gradient-1);
   color: white;
   box-shadow: 
     8px 8px 16px var(--shadow-light-1),
     -8px -8px 16px var(--shadow-light-2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    0 4px 15px rgba(59, 130, 246, 0.3);
 }
 
 .neumo-btn.primary:hover {
-  background: linear-gradient(135deg, var(--primary-light), var(--primary));
+  background: var(--gradient-2);
   box-shadow: 
     12px 12px 24px var(--shadow-light-1),
     -12px -12px 24px var(--shadow-light-2),
-    0 0 30px rgba(102, 126, 234, 0.3);
+    0 8px 25px rgba(59, 130, 246, 0.4);
+  transform: translateY(-4px);
 }
 
 .neumo-btn.secondary {
@@ -391,10 +440,10 @@ textarea::placeholder {
 
 .action-tabs {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: var(--spacing-md);
   margin-bottom: var(--spacing-2xl);
-  background: var(--bg-light);
+  background: var(--bg-light-elevated);
   padding: var(--spacing-md);
   border-radius: var(--radius-xl);
   box-shadow: 
@@ -403,12 +452,12 @@ textarea::placeholder {
 }
 
 .tab-btn {
-  padding: var(--spacing-lg) var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-sm);
   border: none;
   border-radius: var(--radius-lg);
   background: transparent;
   color: var(--text-light);
-  font-size: var(--font-size-base);
+  font-size: clamp(var(--font-size-xs), 2vw, var(--font-size-sm));
   font-weight: 600;
   cursor: pointer;
   transition: all var(--transition-base);
@@ -434,7 +483,7 @@ textarea::placeholder {
 }
 
 .tab-btn.active {
-  background: var(--bg-light);
+  background: var(--bg-light-elevated);
   color: var(--primary);
   box-shadow: 
     6px 6px 12px var(--shadow-light-1),
@@ -523,7 +572,7 @@ textarea::placeholder {
   padding: var(--spacing-md) var(--spacing-lg);
   border: none;
   border-radius: var(--radius-md);
-  background: var(--bg-light);
+  background: var(--bg-light-elevated);
   color: var(--text-light);
   font-size: var(--font-size-base);
   font-family: inherit;
@@ -533,7 +582,7 @@ textarea::placeholder {
     inset -4px -4px 8px var(--shadow-inset-2);
   transition: all var(--transition-base);
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23667eea' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23000000' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right var(--spacing-md) center;
   padding-right: var(--spacing-2xl);
@@ -571,7 +620,7 @@ textarea::placeholder {
   cursor: pointer;
   padding: var(--spacing-md) var(--spacing-lg);
   border-radius: var(--radius-md);
-  background: var(--bg-light);
+  background: var(--bg-light-elevated);
   box-shadow: 
     6px 6px 12px var(--shadow-light-1),
     -6px -6px 12px var(--shadow-light-2);
@@ -594,7 +643,7 @@ textarea::placeholder {
   cursor: pointer;
   appearance: none;
   border-radius: var(--radius-sm);
-  background: var(--bg-light);
+  background: var(--bg-light-elevated);
   box-shadow: 
     inset 3px 3px 6px var(--shadow-inset-1),
     inset -3px -3px 6px var(--shadow-inset-2);
@@ -606,7 +655,7 @@ textarea::placeholder {
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   box-shadow: 
     inset 2px 2px 4px rgba(0, 0, 0, 0.2),
-    0 0 10px rgba(102, 126, 234, 0.3);
+    0 0 10px rgba(59, 130, 246, 0.3);
 }
 
 .checkbox-label input[type="checkbox"]:checked::after {
@@ -678,7 +727,7 @@ textarea::placeholder {
   font-weight: 600;
   color: var(--text-light-secondary);
   padding: var(--spacing-sm) var(--spacing-md);
-  background: var(--bg-light);
+  background: var(--bg-light-elevated);
   border-radius: var(--radius-md);
   box-shadow: 
     inset 3px 3px 6px var(--shadow-inset-1),
@@ -689,7 +738,7 @@ textarea::placeholder {
   margin-bottom: var(--spacing-xl);
   padding: var(--spacing-xl);
   border-radius: var(--radius-lg);
-  background: var(--bg-light);
+  background: var(--bg-light-elevated);
   box-shadow: 
     8px 8px 16px var(--shadow-light-1),
     -8px -8px 16px var(--shadow-light-2);
@@ -726,10 +775,10 @@ textarea::placeholder {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  background: linear-gradient(135deg, var(--info), var(--info-dark));
+  background: var(--gradient-1);
   color: white;
   white-space: nowrap;
-  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 .quiz-options {
@@ -742,7 +791,7 @@ textarea::placeholder {
 .quiz-option {
   padding: var(--spacing-lg) var(--spacing-xl);
   border-radius: var(--radius-md);
-  background: var(--bg-light);
+  background: var(--bg-light-elevated);
   cursor: pointer;
   transition: all var(--transition-base);
   box-shadow: 
@@ -753,6 +802,7 @@ textarea::placeholder {
   line-height: 1.6;
   position: relative;
   overflow: hidden;
+  will-change: transform, box-shadow;
 }
 
 .quiz-option::before {
@@ -780,19 +830,19 @@ textarea::placeholder {
 
 .quiz-option.selected {
   border-color: var(--primary);
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(102, 126, 234, 0.05));
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(59, 130, 246, 0.05));
   box-shadow: 
     inset 4px 4px 8px var(--shadow-inset-1),
     inset -4px -4px 8px var(--shadow-inset-2),
-    0 0 20px rgba(102, 126, 234, 0.2);
+    0 0 20px rgba(59, 130, 246, 0.2);
 }
 
 .quiz-option.correct {
   border-color: var(--success);
-  background: linear-gradient(135deg, rgba(76, 175, 80, 0.15), rgba(76, 175, 80, 0.05));
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.05));
   box-shadow: 
-    inset 4px 4px 8px rgba(76, 175, 80, 0.1),
-    0 0 20px rgba(76, 175, 80, 0.2);
+    inset 4px 4px 8px rgba(16, 185, 129, 0.1),
+    0 0 20px rgba(16, 185, 129, 0.2);
 }
 
 .quiz-option.correct::before {
@@ -802,10 +852,10 @@ textarea::placeholder {
 
 .quiz-option.incorrect {
   border-color: var(--danger);
-  background: linear-gradient(135deg, rgba(244, 67, 54, 0.15), rgba(244, 67, 54, 0.05));
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(239, 68, 68, 0.05));
   box-shadow: 
-    inset 4px 4px 8px rgba(244, 67, 54, 0.1),
-    0 0 20px rgba(244, 67, 54, 0.2);
+    inset 4px 4px 8px rgba(239, 68, 68, 0.1),
+    0 0 20px rgba(239, 68, 68, 0.2);
 }
 
 .quiz-option.incorrect::before {
@@ -818,7 +868,7 @@ textarea::placeholder {
   padding: var(--spacing-lg);
   border: none;
   border-radius: var(--radius-md);
-  background: var(--bg-light);
+  background: var(--bg-light-elevated);
   color: var(--text-light);
   font-size: var(--font-size-base);
   font-family: inherit;
@@ -850,7 +900,7 @@ textarea::placeholder {
   margin-top: var(--spacing-md);
   padding: var(--spacing-lg);
   border-radius: var(--radius-md);
-  background: linear-gradient(135deg, rgba(255, 152, 0, 0.1), rgba(255, 152, 0, 0.05));
+  background: linear-gradient(135deg, rgba(112, 128, 144, 0.1), rgba(112, 128, 144, 0.05));
   border-left: 4px solid var(--warning);
   font-size: var(--font-size-sm);
   line-height: 1.7;
@@ -876,7 +926,7 @@ textarea::placeholder {
   margin-top: var(--spacing-lg);
   padding: var(--spacing-lg);
   border-radius: var(--radius-md);
-  background: linear-gradient(135deg, rgba(33, 150, 243, 0.1), rgba(33, 150, 243, 0.05));
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(6, 182, 212, 0.05));
   border-left: 4px solid var(--info);
   font-size: var(--font-size-sm);
   line-height: 1.7;
@@ -902,7 +952,7 @@ textarea::placeholder {
     12px 12px 24px var(--shadow-light-1),
     -12px -12px 24px var(--shadow-light-2),
     inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    0 0 40px rgba(76, 175, 80, 0.4);
+    0 0 40px rgba(59, 130, 246, 0.4);
   position: relative;
   overflow: hidden;
 }
@@ -950,7 +1000,7 @@ textarea::placeholder {
   color: var(--primary);
   padding: var(--spacing-md) var(--spacing-xl);
   border-radius: var(--radius-md);
-  background: var(--bg-light);
+  background: var(--bg-light-elevated);
   box-shadow: 
     inset 4px 4px 8px var(--shadow-inset-1),
     inset -4px -4px 8px var(--shadow-inset-2);
@@ -1008,7 +1058,7 @@ textarea::placeholder {
   border-right-color: var(--secondary);
   border-radius: var(--radius-full);
   animation: spin 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
-  box-shadow: 0 0 40px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 0 40px rgba(59, 130, 246, 0.4);
 }
 
 @keyframes spin {
@@ -1044,7 +1094,7 @@ textarea::placeholder {
   line-height: 1.6;
   padding: var(--spacing-lg);
   border-radius: var(--radius-md);
-  background: var(--bg-light);
+  background: var(--bg-light-elevated);
   box-shadow: 
     inset 3px 3px 6px var(--shadow-inset-1),
     inset -3px -3px 6px var(--shadow-inset-2);
@@ -1294,6 +1344,16 @@ textarea::placeholder {
 
   .loading-overlay p {
     font-size: var(--font-size-base);
+  }
+
+  /* Chart responsive adjustments */
+  [id*="Chart"] {
+    height: 250px !important;
+  }
+
+  /* Stack charts vertically on tablet */
+  [style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
   }
 }
 
@@ -1550,4 +1610,297 @@ textarea::placeholder {
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--primary) var(--bg-light);
+}
+
+/* ==========================================
+   NEW FEATURES STYLING
+   ========================================== */
+
+/* Concept Map */
+.concept-map {
+  padding: var(--spacing-lg);
+}
+
+.concept-map h4 {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--primary);
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.concept-map ul {
+  list-style: none;
+  padding: 0;
+}
+
+.concept-map li {
+  padding: var(--spacing-md) var(--spacing-lg);
+  margin-bottom: var(--spacing-sm);
+  border-left: 4px solid var(--primary);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), transparent);
+  border-radius: var(--radius-md);
+  line-height: 1.6;
+}
+
+/* Performance Predictor */
+.prediction-result {
+  padding: var(--spacing-lg);
+}
+
+.risk-gauge {
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  border: 3px solid;
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent);
+  box-shadow: 0 8px 16px var(--shadow-light-1);
+  color: var(--text-light);
+}
+
+.risk-gauge h2 {
+  margin: 0;
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+}
+
+.score-display {
+  font-size: var(--font-size-lg);
+  margin: var(--spacing-md) 0;
+  color: var(--text-light);
+}
+
+.prob-display {
+  font-size: var(--font-size-lg);
+  margin: var(--spacing-md) 0;
+  color: var(--text-light);
+}
+
+.metrics-display {
+  margin: var(--spacing-xl) 0;
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  background: var(--bg-light-elevated);
+  box-shadow: inset 4px 4px 8px var(--shadow-inset-1);
+}
+
+.metrics-display h4 {
+  font-size: var(--font-size-lg);
+  color: var(--primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.metric-item {
+  padding: var(--spacing-md);
+  margin: var(--spacing-sm) 0;
+  background: var(--bg-light-elevated);
+  border-radius: var(--radius-sm);
+  box-shadow: 2px 2px 4px var(--shadow-light-1);
+  color: var(--text-light);
+  border: 1px solid var(--shadow-light-1);
+}
+
+.suggestions-display {
+  margin-top: var(--spacing-xl);
+}
+
+.suggestions-display h4 {
+  font-size: var(--font-size-lg);
+  color: var(--warning);
+  margin-bottom: var(--spacing-md);
+}
+
+.suggestions-display ul {
+  list-style: none;
+  padding: 0;
+}
+
+.suggestions-display li {
+  padding: var(--spacing-md) var(--spacing-lg);
+  margin-bottom: var(--spacing-sm);
+  border-left: 4px solid var(--warning);
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), transparent);
+  border-radius: var(--radius-md);
+  line-height: 1.6;
+}
+
+/* Viva Simulator */
+.viva-question {
+  padding: var(--spacing-lg);
+}
+
+.viva-question .question-text {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--primary);
+  padding: var(--spacing-lg);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--primary);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.8;
+}
+
+.expected-points,
+.tips-section {
+  margin: var(--spacing-lg) 0;
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  box-shadow: inset 3px 3px 6px var(--shadow-inset-1);
+}
+
+.expected-points {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), transparent);
+}
+
+.tips-section {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), transparent);
+  border-left: 4px solid var(--warning);
+}
+
+.expected-points h5,
+.tips-section h5 {
+  color: var(--text-light);
+  font-size: var(--font-size-base);
+  margin-top: 0;
+}
+
+.expected-points ul {
+  list-style-position: inside;
+  margin: var(--spacing-md) 0;
+  padding-left: var(--spacing-lg);
+}
+
+.expected-points li {
+  padding: var(--spacing-sm);
+  line-height: 1.6;
+}
+
+.viva-progress {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-light-secondary);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--bg-light-elevated);
+  border-radius: var(--radius-md);
+  box-shadow: inset 3px 3px 6px var(--shadow-inset-1);
+}
+
+/* ==========================================
+   APEXCHARTS STYLING
+   ========================================== */
+
+/* ApexCharts responsive styling */
+.apexcharts-canvas {
+  margin: 0 auto;
+}
+
+.apexcharts-tooltip {
+  background: var(--bg-light-elevated) !important;
+  border: 1px solid var(--shadow-light-1) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: 0 8px 16px var(--shadow-light-1) !important;
+}
+
+.apexcharts-tooltip-title {
+  background: var(--primary) !important;
+  color: white !important;
+  padding: 8px 12px !important;
+  border-radius: var(--radius-sm) !important;
+  font-weight: 600 !important;
+}
+
+.apexcharts-tooltip-custom {
+  background: var(--bg-light-elevated) !important;
+  padding: 12px !important;
+}
+
+/* Chart text color theming */
+.apexcharts-text {
+  fill: var(--text-light) !important;
+}
+
+.apexcharts-xaxis-label {
+  color: var(--text-light) !important;
+}
+
+.apexcharts-yaxis-label {
+  color: var(--text-light) !important;
+}
+
+/* Legend styling */
+.apexcharts-legend {
+  padding: 12px 0 !important;
+}
+
+.apexcharts-legend-text {
+  color: var(--text-light) !important;
+  font-size: var(--font-size-sm) !important;
+}
+
+/* Grade Requirements Table */
+.see-requirement-highlight {
+  padding: var(--spacing-2xl) var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  border: 3px solid;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(59, 130, 246, 0.05));
+  box-shadow: 0 8px 20px var(--shadow-light-1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.see-requirement-highlight::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  opacity: 0.5;
+}
+
+.see-requirement-highlight p {
+  color: var(--text-light);
+}
+
+.prediction-result table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--spacing-md);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: inset 2px 2px 4px var(--shadow-inset-1);
+}
+
+.prediction-result table tr {
+  transition: background-color var(--transition-base);
+}
+
+.prediction-result table tr:hover {
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.prediction-result table td {
+  padding: var(--spacing-md) var(--spacing-lg);
+  border: 1px solid var(--shadow-light-1);
+  text-align: left;
+  font-size: var(--font-size-sm);
+  color: var(--text-light);
+  background: var(--bg-light-elevated);
+}
+
+.prediction-result table tr:first-child {
+  background: var(--bg-light-elevated);
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.prediction-result table tr:first-child td {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(59, 130, 246, 0.2));
+  color: var(--primary-light);
 }

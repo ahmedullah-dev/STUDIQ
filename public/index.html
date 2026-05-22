@@ -3,17 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AI Study Tutor - Enhanced</title>
+  <meta name="description" content="StudIQ - Your Intelligent Learning Companion. Generate quizzes, summaries, and more with AI."/>
+  <meta name="theme-color" content="#3b82f6"/>
+  <title>StudIQ - Intelligent Learning</title>
   <link rel="stylesheet" href="styles.css"/>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com"/>
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.45.1/apexcharts.min.js" defer></script>
 </head>
 <body>
   <button id="themeToggle" class="neumo-btn theme-toggle">🌙</button>
   
   <div class="container">
     <header class="app-header">
-      <h1>📘 AI Study Tutor</h1>
-      <p class="tagline">Your intelligent learning companion</p>
+      <h1><span class="logo-icon">📚</span> StudIQ</h1>
+      <p class="tagline">Your Intelligent Learning Companion</p>
     </header>
 
     <!-- Main Content Area -->
@@ -27,6 +32,9 @@
       <button class="tab-btn active" data-tab="summary">📄 Summary</button>
       <button class="tab-btn" data-tab="quiz">🧠 Quiz</button>
       <button class="tab-btn" data-tab="quickfire">⚡ Quick Fire</button>
+      <button class="tab-btn" data-tab="conceptmap">🗺️ Concept Map</button>
+      <button class="tab-btn" data-tab="predictor">📊 Performance</button>
+      <button class="tab-btn" data-tab="viva">🎤 Viva Practice</button>
     </div>
 
     <!-- Summary Section -->
@@ -169,6 +177,103 @@
           <button id="retryQuickfire" class="neumo-btn icon-btn" title="Retry">🔄</button>
         </div>
         <div id="quickfireResult"></div>
+      </div>
+    </div>
+
+    <!-- Concept Map Section -->
+    <div id="conceptmapTab" class="tab-content">
+      <div class="neumo-card controls-card">
+        <h3 class="section-title">🗺️ Concept Dependency Map</h3>
+        <p class="info-text">Visualize how topics relate to each other</p>
+        <button id="conceptMapBtn" class="neumo-btn primary full-width">🗺️ Generate Concept Map</button>
+      </div>
+
+      <div id="conceptMapSection" class="neumo-card result-card hidden">
+        <div class="result-header">
+          <h3>🗺️ Concept Map</h3>
+          <button id="exportMapPDF" class="neumo-btn icon-btn" title="Export PDF">📥</button>
+        </div>
+        <div id="conceptMapDisplay" class="result-content"></div>
+      </div>
+    </div>
+
+    <!-- Performance Predictor Section -->
+    <div id="predictorTab" class="tab-content">
+      <div class="neumo-card controls-card">
+        <h3 class="section-title">📊 SEE Grade Calculator</h3>
+        <p class="info-text">Calculate minimum SEE marks required to achieve your desired grade</p>
+        
+        <div class="control-row">
+          <div class="control-group">
+            <label for="cieInput">CIE Marks (out of 40):</label>
+            <input type="number" id="cieInput" class="neumo-select" min="0" max="40" placeholder="0-40" value="30">
+          </div>
+        </div>
+
+        <div class="control-row">
+          <div class="control-group full-width">
+            <label for="desiredGradeInput">Desired Grade:</label>
+            <select id="desiredGradeInput" class="neumo-select">
+              <option value="S">S - Excellent (≥90)</option>
+              <option value="A">A - Very Good (≥80)</option>
+              <option value="B">B - Good (≥70)</option>
+              <option value="C">C - Average (≥60)</option>
+              <option value="D">D - Below Average (≥50)</option>
+              <option value="E">E - Pass (≥40)</option>
+            </select>
+          </div>
+        </div>
+
+        <button id="predictBtn" class="neumo-btn primary full-width">🎯 Calculate Required SEE Marks</button>
+      </div>
+
+      <div id="predictorSection" class="neumo-card result-card hidden">
+        <div class="result-header">
+          <h3>📊 SEE Requirement Analysis</h3>
+        </div>
+        <div id="predictorDisplay" class="result-content"></div>
+      </div>
+    </div>
+
+    <!-- Viva Simulator Section -->
+    <div id="vivaTab" class="tab-content">
+      <div class="neumo-card controls-card">
+        <h3 class="section-title">🎤 Viva Practice Simulator</h3>
+        <p class="info-text">Practice oral exam questions with feedback</p>
+        
+        <div class="control-row">
+          <div class="control-group">
+            <label for="vivaDifficulty">Difficulty:</label>
+            <select id="vivaDifficulty" class="neumo-select">
+              <option value="easy">Easy</option>
+              <option value="medium" selected>Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <label for="vivaCount">Questions:</label>
+            <select id="vivaCount" class="neumo-select">
+              <option value="3">3</option>
+              <option value="5" selected>5</option>
+              <option value="8">8</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+        </div>
+
+        <button id="vivaBtn" class="neumo-btn primary full-width">🎤 Start Viva Practice</button>
+      </div>
+
+      <div id="vivaSection" class="neumo-card result-card hidden">
+        <div class="result-header">
+          <h3>🎤 Viva Questions</h3>
+          <div class="viva-progress" id="vivaProgress"></div>
+        </div>
+        <div id="vivaContainer"></div>
+        <div id="vivaActions" class="hidden">
+          <button id="nextVivaBtn" class="neumo-btn primary">📝 Next Question</button>
+        </div>
       </div>
     </div>
 

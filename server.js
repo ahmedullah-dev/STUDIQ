@@ -225,11 +225,6 @@ function parseQuizResponse(rawResponse) {
   }
 }
 
-// Homepage - Serve index.html
-app.get("/", (req, res) => {
-  res.sendFile(new URL('./public/index.html', import.meta.url).pathname);
-});
-
 // ENHANCED SUMMARIZE ENDPOINT
 app.post("/api/summarize", async (req, res) => {
   try {

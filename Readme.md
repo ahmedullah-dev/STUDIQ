@@ -10,9 +10,12 @@
 STUDIQ is a revolutionary web-based learning platform that leverages artificial intelligence to personalize your educational experience. Generate intelligent quizzes, visualize concept dependencies, predict performance, and practice viva interviews—all powered by cutting-edge AI technology.
 
 ---
+
 ## 🚀 Live Demo
-  
-- **Render:** [https://studiq-kb4q.onrender.com/](https://studiq-kb4q.onrender.com/)  
+
+- **Render:** [https://studiq-kb4q.onrender.com/](https://studiq-kb4q.onrender.com/)
+
+---
 
 ## 🌟 Key Features
 

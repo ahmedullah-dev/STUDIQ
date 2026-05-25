@@ -584,7 +584,6 @@ If you find STUDIQ helpful, please:
 ---
 
 **Last Updated**: May 2026  
-**Maintainer**: Your Name/Team  
 **Status**: ✅ Active Development
 
 ---
